@@ -1,3 +1,3 @@
 export interface ConfigOptions {
-    folder: string;
+  folder: string;
 }
