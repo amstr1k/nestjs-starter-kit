@@ -11,9 +11,16 @@ module.exports = {
     'prettier',
     'prettier/@typescript-eslint',
   ],
+  rules: {
+    quotes: [2, 'backtick'],
+    '@typescript-eslint/interface-name-prefix': [
+      'error',
+      'always',
+    ],
+  },
   root: true,
   env: {
     node: true,
     jest: true,
-  }
+  },
 };
