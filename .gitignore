@@ -389,6 +389,7 @@ Temporary Items
 # Local
 docker-compose.yml
 .env
+.env.development
 dist
 
 .vscode/

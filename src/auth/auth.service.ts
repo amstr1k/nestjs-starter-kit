@@ -14,6 +14,7 @@ import { CreateUserTokenDto } from '../token/dto/create-user-token.dto';
 import { TokenService } from '../token/token.service';
 import { mapToReadableUser } from 'src/user/mappers/user.mapper';
 import { IUserToken } from '../token/interfaces/user-token.interface';
+import { ChangePasswordDto } from "./dto/change-password.dto";
 
 @Injectable()
 export class AuthService {
@@ -47,6 +48,14 @@ export class AuthService {
             return mapToReadableUser(user, token);
         }
         throw new BadRequestException(`Invalid credentials`);
+    }
+
+    async changePassword(userId: string, changePasswordDto: ChangePasswordDto): Promise<boolean> {
+        const password = await this.userService.hashPassword(changePasswordDto.password);
+
+        await this.userService.update(userId, { password });
+        await this.tokenService.deleteAll(userId);
+        return true;
     }
 
     private async generateToken(data: ITokenPayload, options?: SignOptions): Promise<string> {

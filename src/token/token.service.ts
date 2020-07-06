@@ -12,15 +12,15 @@ export class TokenService {
         return await userToken.save()
     }
 
-    async delete(uId: string, token: string): Promise<{ ok?: number, n?: number }> {
-        return this.tokenModel.deleteOne({ uId, token })
+    async delete(userId: string, token: string): Promise<{ ok?: number, n?: number }> {
+        return this.tokenModel.deleteOne({ userId, token })
     }
 
-    async deleteAll(uId: string): Promise<{ ok?: number, n?: number }> {
-        return this.tokenModel.deleteMany({ uId });
+    async deleteAll(userId: string): Promise<{ ok?: number, n?: number }> {
+        return this.tokenModel.deleteMany({ userId });
     }
 
-    async exists(uId: string, token: string): Promise<boolean> {
-        return this.tokenModel.exists({ uId, token });
+    async exists(userId: string, token: string): Promise<boolean> {
+        return this.tokenModel.exists({ userId, token });
     }
 }
