@@ -14,14 +14,15 @@ import { CreateUserTokenDto } from '../token/dto/create-user-token.dto';
 import { TokenService } from '../token/token.service';
 import { mapToReadableUser } from 'src/user/mappers/user.mapper';
 import { IUserToken } from '../token/interfaces/user-token.interface';
-import { ChangePasswordDto } from "./dto/change-password.dto";
+import { ChangePasswordDto } from './dto/change-password.dto';
 
 @Injectable()
 export class AuthService {
     constructor(
         private readonly userService: UserService,
         private readonly tokenService: TokenService,
-        private readonly jwtService: JwtService){}
+        private readonly jwtService: JwtService) {
+    }
 
     async signUp(createUserDto: CreateUserDto): Promise<IUser> {
         return this.userService.create(createUserDto);
@@ -42,7 +43,7 @@ export class AuthService {
             await this.saveToken({
                 token,
                 expireAt,
-                userId: user._id,
+                userId: user._id
             });
 
             return mapToReadableUser(user, token);

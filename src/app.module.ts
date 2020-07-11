@@ -8,21 +8,22 @@ import { AuthModule } from './auth/auth.module';
 const environment = process.env.NODE_ENV || `development`;
 
 @Module({
-  imports: [
-    UserModule,
-    AuthModule,
+    imports: [
+        UserModule,
+        AuthModule,
 
-    ConfigModule.forRoot({
-      envFilePath: `.env.${environment}`,
-      isGlobal: true,
-    }),
-    MongooseModule.forRoot(
-      process.env.MONGODB_WRITE_CONNECTION_STRING,
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-      }
-    ),
-  ],
+        ConfigModule.forRoot({
+            envFilePath: `.env.${environment}`,
+            isGlobal: true
+        }),
+        MongooseModule.forRoot(
+            process.env.MONGODB_WRITE_CONNECTION_STRING,
+            {
+                useNewUrlParser: true,
+                useUnifiedTopology: true
+            }
+        )
+    ]
 })
-export class AppModule {}
+export class AppModule {
+}
