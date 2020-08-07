@@ -29,7 +29,7 @@
     "@nestjs/platform-express": "^6.10.14",
     "@nestjs/swagger": "^4.2.0",
     "bcrypt": "^5.0.0",
-    "class-transformer": "^0.2.3",
+    "class-transformer": "^0.3.1",
     "class-validator": "^0.12.2",
     "dayjs": "^1.8.28",
     "dotenv": "^8.2.0",
